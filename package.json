@@ -1,0 +1,25 @@
+{
+  "name": "jest-test-js",
+  "version": "1.0.0",
+  "description": "Projeto para estudo do test runner JEST",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gildoneto/jest-test-js.git"
+  },
+  "keywords": [
+    "jest",
+    "test",
+    "Fabio",
+    "Vedovelli"
+  ],
+  "author": "@gildoneto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gildoneto/jest-test-js/issues"
+  },
+  "homepage": "https://github.com/gildoneto/jest-test-js#readme"
+}
