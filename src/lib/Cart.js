@@ -22,9 +22,26 @@ export default class Cart {
     remove(this.items, { product });
   }
 
-  summary() {}
+  summary() {
+    const total = this.getTotal();
+    const items = this.items;
 
-  checkout() {}
+    return {
+      total,
+      items,
+    };
+  }
+
+  checkout() {
+    const { total, items } = this.summary();
+
+    this.items = [];
+
+    return {
+      total,
+      items,
+    };
+  }
 }
 
 // Uso
