@@ -1,7 +1,12 @@
-import find from "lodash/find";
-import remove from "lodash/remove";
+import find from 'lodash/find';
+import remove from 'lodash/remove';
+import Dinero from 'dinero.js';
 
-// Declaração de classe
+const Money = Dinero;
+
+Money.defaultCurrency = 'BRL';
+Money.defaultPrecision = 2;
+
 export default class Cart {
   items = [];
 
@@ -14,8 +19,8 @@ export default class Cart {
 
   getTotal() {
     return this.items.reduce((acc, item) => {
-      return acc + item.quantity * item.product.price;
-    }, 0);
+      return acc.add(Money({ amount: item.quantity * item.product.price }));
+    }, Money({ amount: 0 }));
   }
 
   remove(product) {
@@ -23,7 +28,7 @@ export default class Cart {
   }
 
   summary() {
-    const total = this.getTotal();
+    const total = this.getTotal().getAmount();
     const items = this.items;
 
     return {
@@ -43,16 +48,3 @@ export default class Cart {
     };
   }
 }
-
-// Uso
-const cart = new Cart();
-
-const product = {
-  title: "",
-  price: "",
-};
-
-const item = {
-  quantity: 2,
-  product,
-};
