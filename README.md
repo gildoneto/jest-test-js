@@ -23,3 +23,11 @@ https://editorconfig.org/
 https://lodash.com/
 
 `yarn add lodash`
+
+##### Trabalhando com Inline Snapshot no Jest
+
+Precisa instalar o prettier no projeto
+
+`yarn add -D prettier`
+
+Para atualizar os snapshots pressionar o 'u' na janela de opções do Jest
