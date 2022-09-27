@@ -1,14 +1,14 @@
-import Cart from "./Cart";
+import Cart from './Cart';
 
-describe("Cart", () => {
+describe('Cart', () => {
   let cart;
 
   const adidasMen = {
-    title: "Adidas shoes - men",
+    title: 'Adidas shoes - men',
     price: 35388,
   };
   const adidasWoman = {
-    title: "Adidas shoes - women",
+    title: 'Adidas shoes - women',
     price: 41872,
   };
 
@@ -16,12 +16,12 @@ describe("Cart", () => {
     cart = new Cart();
   });
 
-  describe("getTotal()", () => {
-    it("should return 0 when getTotal() is executed in a newly created instance", () => {
+  describe('getTotal()', () => {
+    it('should return 0 when getTotal() is executed in a newly created instance', () => {
       expect(cart.getTotal().getAmount()).toEqual(0);
     });
 
-    it("should multiply quantity and price and receive the total amount", () => {
+    it('should multiply quantity and price and receive the total amount', () => {
       const item = {
         product: adidasMen,
         quantity: 2,
@@ -32,7 +32,7 @@ describe("Cart", () => {
       expect(cart.getTotal().getAmount()).toEqual(70776);
     });
 
-    it("should ensure no more than on product exists at a time", () => {
+    it('should ensure no more than on product exists at a time', () => {
       cart.add({
         product: adidasMen,
         quantity: 2,
@@ -46,7 +46,7 @@ describe("Cart", () => {
       expect(cart.getTotal().getAmount()).toEqual(35388);
     });
 
-    it("should update total when a product gets included and the removed", () => {
+    it('should update total when a product gets included and the removed', () => {
       cart.add({
         product: adidasMen,
         quantity: 2,
@@ -63,8 +63,8 @@ describe("Cart", () => {
     });
   });
 
-  describe("checkout()", () => {
-    it("should return an object with the total and the list of items ", () => {
+  describe('checkout()', () => {
+    it('should return an object with the total and the list of items ', () => {
       cart.add({
         product: adidasMen,
         quantity: 2,
@@ -78,7 +78,7 @@ describe("Cart", () => {
       expect(cart.checkout()).toMatchSnapshot();
     });
 
-    it("should return an object with the total and the list of items when summary() is called", () => {
+    it('should return an object with the total and the list of items when summary() is called', () => {
       cart.add({
         product: adidasMen,
         quantity: 5,
@@ -93,7 +93,7 @@ describe("Cart", () => {
       expect(cart.getTotal().getAmount()).toBeGreaterThan(0);
     });
 
-    it("should reset the cart when checkout() is called", () => {
+    it('should reset the cart when checkout() is called', () => {
       cart.add({
         product: adidasWoman,
         quantity: 3,
@@ -102,6 +102,23 @@ describe("Cart", () => {
       cart.checkout();
 
       expect(cart.getTotal().getAmount()).toEqual(0);
+    });
+  });
+
+  describe('special conditions', () => {
+    it('should apply percentage discount quantity above minimum is ', () => {
+      const condition = {
+        percentage: 30,
+        minimum: 2,
+      };
+
+      cart.add({
+        product: adidasMen,
+        condition,
+        quantity: 3,
+      });
+
+      expect(cart.getTotal().getAmount()).toEqual(74315);
     });
   });
 });
