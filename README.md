@@ -12,3 +12,7 @@ Instalar a dependencia do Babel
 https://jestjs.io/pt-BR/docs/getting-started#usando-babel
 
 Criar o arquivo babel.config.js
+
+###### Adiciona editor config
+
+https://editorconfig.org/
