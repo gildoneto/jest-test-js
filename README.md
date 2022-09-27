@@ -35,3 +35,7 @@ Usar método `toMatchInlineSnapshot()`
 Para atualizar os snapshots pressionar o 'u' na janela de opções do Jest
 
 Se preferir que os snapshots fiquem em outra pasta, escolha a método `toMatchSnapshot()`
+
+##### Trabalhando com a biblioteca dinero.js
+
+`yarn add dinero`
