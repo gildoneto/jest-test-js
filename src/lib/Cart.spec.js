@@ -93,6 +93,20 @@ describe('Cart', () => {
       expect(cart.getTotal().getAmount()).toBeGreaterThan(0);
     });
 
+    it('should inlcude formatted amount in the summary', () => {
+      cart.add({
+        product: adidasMen,
+        quantity: 5,
+      });
+
+      cart.add({
+        product: adidasWoman,
+        quantity: 3,
+      });
+
+      expect(cart.summary().formatted).toEqual('R$3,025.56');
+    });
+
     it('should reset the cart when checkout() is called', () => {
       cart.add({
         product: adidasWoman,
