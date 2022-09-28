@@ -39,3 +39,12 @@ Se preferir que os snapshots fiquem em outra pasta, escolha a método `toMatchSn
 ##### Trabalhando com a biblioteca dinero.js
 
 `yarn add dinero`
+
+##### Instalando o ndb
+
+https://github.com/GoogleChromeLabs/ndb
+
+`yarn add -D ndb`
+
+adiciona o script no package.json
+`"test:debug": "ndb jest"`
